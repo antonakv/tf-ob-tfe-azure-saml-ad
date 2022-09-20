@@ -187,3 +187,23 @@ url = "https://oxsqtfeaa.akulov.cc/admin/account/new?token=xxxxxxxxxxxxxxxxx"
 
 ![SAML](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img2.png)
 
+- Login to Azure portal and click to the Azure Active Directory
+
+![Azure Active Directory](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img3.png)
+
+- Click to the Enterprise Applications
+
+![Enterprise applications](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img4.png)
+
+- In the Enterprise Applications click New application
+
+![New Application](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img5.png)
+
+- Click Create your own application
+
+![Create your own application](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img6.png)
+
+- Set app name and click Create
+
+![Create](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img7.png)
+
