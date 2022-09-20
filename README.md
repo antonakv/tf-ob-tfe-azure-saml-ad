@@ -203,7 +203,33 @@ url = "https://oxsqtfeaa.akulov.cc/admin/account/new?token=xxxxxxxxxxxxxxxxx"
 
 ![Create your own application](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img6.png)
 
-- Set app name and click Create
+- Fill the app name and click Create
 
 ![Create](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img7.png)
+
+- On the app page click Single sign-on
+
+![Single sign-on](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img8.png)
+
+- In the Select a single sign-on method section click SAML
+
+![SAML](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img9.png)
+
+- In the Basic SAML configuration section click Edit
+
+![Basic SAML Configuration](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img10.png)
+
+- Copy from the TFE Admin - SAML setting page following urls: 
+
+Identifier (Entity ID): https://<TFE HOSTNAME>/users/saml/metadata (listed as "Metadata (audience) URL" in TFE's SAML settings).
+
+Reply URL (Assertion Consumer Service URL): https://<TFE HOSTNAME>/users/saml/auth (listed as "ACS consumer (recipient) URL" in TFE's SAML settings).
+
+Sign on URL: https://<TFE HOSTNAME>/
+
+![SAML Configuration](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img11.png)
+
+- In the Attributes & Claims section click Edit
+
+![Edit attributes and claims](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img12.png)
 
