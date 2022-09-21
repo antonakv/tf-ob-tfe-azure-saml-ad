@@ -233,3 +233,11 @@ Sign on URL: https://<TFE HOSTNAME>/
 
 ![Edit attributes and claims](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img12.png)
 
+- Click on the Unique User Identifier (Name ID) claim value
+
+![Click claim](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img13.png)
+
+- Select user.mail in the Source attribute field and click Save
+
+![Select user.mail](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img14.png)
+
