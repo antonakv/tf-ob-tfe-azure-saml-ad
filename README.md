@@ -343,5 +343,22 @@ Sign on URL: https://<TFE HOSTNAME>/
 
 ![Assign](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img34.png)
 
-- Login to the TFE with user email created on the previous step
+- Login to the TFE with SAML
 
+![Login with SAML](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img35.png)
+
+- Enter email of the Azure AD user created on previous steps and click Next
+
+![Enter email](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img36.png)
+
+- Enter password of the Azure AD user created on previous steps and click Next
+
+![Enter password](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img37.png)
+
+- Click Yes on the Stay signed in dialog
+
+![Stay signed in](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img38.png)
+
+- Expected result
+
+![Logged in to the TFE](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img39.png)
