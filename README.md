@@ -219,7 +219,7 @@ url = "https://oxsqtfeaa.akulov.cc/admin/account/new?token=xxxxxxxxxxxxxxxxx"
 
 ![Basic SAML Configuration](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img10.png)
 
-- Copy from the TFE Admin - SAML setting page following urls: 
+- Copy from the TFE Admin - SAML setting page following urls and save in the text document: 
 
 Identifier (Entity ID): https://<TFE HOSTNAME>/users/saml/metadata (listed as "Metadata (audience) URL" in TFE's SAML settings).
 
@@ -240,4 +240,108 @@ Sign on URL: https://<TFE HOSTNAME>/
 - Select user.mail in the Source attribute field and click Save
 
 ![Select user.mail](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img14.png)
+
+- On the same Attributes & Claims page click Add new claim
+
+![Click add new claim](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img15.png)
+
+- Add claim called MemberOf with Source attribute: user.assignedroles and click Save
+
+![Add claim](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img16.png)
+
+- Go back and in the Single sign-on section SAML Certificates download Certificate (Base64)
+
+![Download](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img17.png)
+
+- Under the 4 Set up app header copy Login URL and Logout URL and save them in the text document
+
+![Copy URLs](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img18.png)
+
+- Open the TFE url https://<TFE_HOSTNAME>/app/admin/saml
+
+![SAML config](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img19.png)
+
+- On the SAML TFE page Click checkbox Enable SAML single sign-on 
+
+![Enable SAML single sign-on](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img20.png)
+
+- In the `Identity Provider Settings` section of the TFE Fill Single Sign-On URL with previously copied `Login URL`. Fill Single Log-out URL with  previously copied `Logout URL`. Copy contents of previously downloaded Certificate (Base64) file and paste to the `IDP Certificate` field.
+
+![Copy paste](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img21.png)
+
+- Scroll to the end of the page and click `Save SAML settings`
+
+![Save SAML settings](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img22.png)
+
+- Create team in the Terraform Enterprise organisation settings
+
+![Create team](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img23.png)
+
+- Open App registrations on the Azure portal home page
+
+![App registrations](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img24.png)
+
+- Search your application name
+
+![Search your app](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img25.png)
+
+- Click on the app name
+
+![Click on the app](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img26.png)
+
+- In the app registration page click Manifest
+
+![Click manifest](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img27.png)
+
+- Generate unique GUID with some UUID generator
+
+```
+% uuid
+43c1d5e4-3a53-11ed-928c-a75cc6df3e43
+```
+
+- Add appRoles data block with generated uuid and previously created TFE group name to the manifest and click Save
+
+```
+		{
+			"allowedMemberTypes": [
+				"User"
+			],
+			"description": "ptfegroup",
+			"displayName": "ptfegroup",
+			"id": "43c1d5e4-3a53-11ed-928c-a75cc6df3e43",
+			"isEnabled": true,
+			"lang": null,
+			"origin": "Application",
+			"value": "ptfegroup"
+		},
+```
+
+![Click save](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img28.png)
+
+- Go to the Azure Active directory Enterprise applications and search for your application
+
+![Search for app](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img29.png)
+
+- Click on the application name and then on the Users and groups
+
+![Click on the app](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img30.png)
+
+- Click Add user/group
+
+![Click add user/group](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img31.png)
+
+- Click to `Users and groups: None Selected `, search for previously created Active directory account email
+
+![Click select](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img32.png)
+
+- Click to `Select a role: None Selected` and click on previously created Active directory group
+
+![Click select and select group](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img33.png)
+
+- Click `Assign`
+
+![Assign](https://github.com/antonakv/tf-ob-tfe-azure-saml-ad/raw/main/images/img34.png)
+
+- Login to the TFE with user email created on the previous step
 
